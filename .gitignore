@@ -1,0 +1,29 @@
+# KiCad user preferences, caches, and backups
+*.kicad_prl
+*.bak
+*-bak
+*.kicad_pcb-bak
+*.kicad_sch-bak
+_autosave-*
+*.tmp
+*-save.kicad_pcb
+*-save.kicad_sch
+*.lck
+fp-info-cache
+
+# Reports
+*.rpt
+
+# Python cache and temporary files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Editor and OS files
+.history/
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
+Thumbs.db
