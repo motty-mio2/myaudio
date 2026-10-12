@@ -58,6 +58,8 @@ cp_def = get_sym_def('/usr/share/kicad/symbols/Device.kicad_sym', 'C_Polarized',
 l_def = get_sym_def('/usr/share/kicad/symbols/Device.kicad_sym', 'L', 'Device:L')
 nettie_def = get_sym_def('/usr/share/kicad/symbols/Device.kicad_sym', 'NetTie_2', 'Device:NetTie_2')
 gnd_def = get_sym_def('/usr/share/kicad/symbols/power.kicad_sym', 'GND', 'power:GND')
+gnda_def = get_sym_def('/usr/share/kicad/symbols/power.kicad_sym', 'GNDA', 'power:GNDA')
+gndd_def = get_sym_def('/usr/share/kicad/symbols/power.kicad_sym', 'GNDD', 'power:GNDD')
 p5v_def = get_sym_def('/usr/share/kicad/symbols/power.kicad_sym', '+5V', 'power:+5V')
 p3v3_def = get_sym_def('/usr/share/kicad/symbols/power.kicad_sym', '+3V3', 'power:+3V3')
 pwr_flag_def = get_sym_def('/usr/share/kicad/symbols/power.kicad_sym', 'PWR_FLAG', 'power:PWR_FLAG')
@@ -107,6 +109,8 @@ sch_text = f"""(kicad_sch
 {nettie_def}
 {xiao_sym_def}
 {gnd_def}
+{gnda_def}
+{gndd_def}
 {p5v_def}
 {p3v3_def}
 {pwr_flag_def}
@@ -130,11 +134,17 @@ def add_label(name, x, y, rot=0):
 
 def add_gnd(x, y, net_label="DGND"):
     g_u = u()
-    return f"""\t(symbol (lib_id "power:GND") (at {x:.2f} {y:.2f} 0) (unit 1)
+    if net_label == "AGND":
+        lib_id = "power:GNDA"
+        val_y = y + 3.81
+    else:
+        lib_id = "power:GNDD"
+        val_y = y + 3.18
+    return f"""\t(symbol (lib_id "{lib_id}") (at {x:.2f} {y:.2f} 0) (unit 1)
 \t\t(in_bom yes) (on_board yes) (dnp no)
 \t\t(uuid {g_u})
-\t\t(property "Reference" "#PWR?" (at {x:.2f} {y+3.81:.2f} 0) (effects (font (size 1.27 1.27)) hide))
-\t\t(property "Value" "{net_label}" (at {x:.2f} {y+2.54:.2f} 0) (effects (font (size 1.27 1.27)) hide))
+\t\t(property "Reference" "#PWR?" (at {x:.2f} {y+5.08:.2f} 0) (effects (font (size 1.27 1.27)) hide))
+\t\t(property "Value" "{net_label}" (at {x:.2f} {val_y:.2f} 0) (effects (font (size 1.27 1.27))))
 \t\t(property "Footprint" "" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
 \t\t(property "Datasheet" "" (at {x:.2f} {y:.2f} 0) (effects (font (size 1.27 1.27)) hide))
 \t\t(pin "1" (uuid {u()}))
@@ -399,48 +409,58 @@ p16x, p16y = sym_to_sch(u2_x, u2_y, p16['x'], p16['y'], 0)
 sch_text += add_wire(p16x, p16y, p16x, p16y - 5.08)
 sch_text += add_label("+5V_FILT", p16x, p16y - 5.08, 90)
 
-# Pin 5: DGND
+# Pin 5: DGND (offset right-down for clear separation from AGND)
 p5 = pt2258_pins['5']
 p5x, p5y = sym_to_sch(u2_x, u2_y, p5['x'], p5['y'], 0)
-sch_text += add_wire(p5x, p5y, p5x, p5y + 5.08)
-sch_text += add_gnd(p5x, p5y + 5.08, "DGND")
+sch_text += add_wire(p5x, p5y, p5x + 3.81, p5y + 3.81)
+sch_text += add_wire(p5x + 3.81, p5y + 3.81, p5x + 3.81, p5y + 6.35)
+sch_text += add_gnd(p5x + 3.81, p5y + 6.35, "DGND")
 
-# Pin 14: GND (AGND)
+# Pin 14: GND (AGND) (offset left-down for clear separation from DGND)
 p14_u2 = pt2258_pins['14']
 p14x_u2, p14y_u2 = sym_to_sch(u2_x, u2_y, p14_u2['x'], p14_u2['y'], 0)
-sch_text += add_wire(p14x_u2, p14y_u2, p14x_u2, p14y_u2 + 5.08)
-sch_text += add_gnd(p14x_u2, p14y_u2 + 5.08, "AGND")
+sch_text += add_wire(p14x_u2, p14y_u2, p14x_u2 - 3.81, p14y_u2 + 3.81)
+sch_text += add_wire(p14x_u2 - 3.81, p14y_u2 + 3.81, p14x_u2 - 3.81, p14y_u2 + 6.35)
+sch_text += add_gnd(p14x_u2 - 3.81, p14y_u2 + 6.35, "AGND")
 
-# Pin 4 (CODE2): DGND
+# Pin 4 (CODE2) & Pin 17 (CODE1): Tied together to single DGND symbol
 p4_u2 = pt2258_pins['4']
 p4x_u2, p4y_u2 = sym_to_sch(u2_x, u2_y, p4_u2['x'], p4_u2['y'], 0)
-sch_text += add_wire(p4x_u2, p4y_u2, p4x_u2 - 5.08, p4y_u2)
-sch_text += add_gnd(p4x_u2 - 5.08, p4y_u2, "DGND")
-
-# Pin 17 (CODE1): DGND
 p17 = pt2258_pins['17']
 p17x, p17y = sym_to_sch(u2_x, u2_y, p17['x'], p17['y'], 0)
-sch_text += add_wire(p17x, p17y, p17x - 5.08, p17y)
-sch_text += add_gnd(p17x - 5.08, p17y, "DGND")
+bus_dgnd_x = p4x_u2 - 5.08
+sch_text += add_wire(p17x, p17y, bus_dgnd_x, p17y)
+sch_text += add_wire(p4x_u2, p4y_u2, bus_dgnd_x, p4y_u2)
+sch_text += add_wire(bus_dgnd_x, p17y, bus_dgnd_x, p4y_u2)
+sch_text += add_junction(bus_dgnd_x, p17y)
+sch_text += add_junction(bus_dgnd_x, p4y_u2)
+sch_text += add_wire(bus_dgnd_x, p4y_u2, bus_dgnd_x - 3.81, p4y_u2)
+sch_text += add_gnd(bus_dgnd_x - 3.81, p4y_u2, "DGND")
 
 # Pin 6 (SCL): I2C_SCL
 p6_u2 = pt2258_pins['6']
 p6x_u2, p6y_u2 = sym_to_sch(u2_x, u2_y, p6_u2['x'], p6_u2['y'], 0)
-sch_text += add_wire(p6x_u2, p6y_u2, p6x_u2 - 5.08, p6y_u2)
-sch_text += add_label("I2C_SCL", p6x_u2 - 5.08, p6y_u2, 180)
+sch_text += add_wire(p6x_u2, p6y_u2, p6x_u2 - 8.89, p6y_u2)
+sch_text += add_label("I2C_SCL", p6x_u2 - 8.89, p6y_u2, 180)
 
 # Pin 7 (SDA): I2C_SDA
 p7_u2 = pt2258_pins['7']
 p7x_u2, p7y_u2 = sym_to_sch(u2_x, u2_y, p7_u2['x'], p7_u2['y'], 0)
-sch_text += add_wire(p7x_u2, p7y_u2, p7x_u2 - 5.08, p7y_u2)
-sch_text += add_label("I2C_SDA", p7x_u2 - 5.08, p7y_u2, 180)
+sch_text += add_wire(p7x_u2, p7y_u2, p7x_u2 - 8.89, p7y_u2)
+sch_text += add_label("I2C_SDA", p7x_u2 - 8.89, p7y_u2, 180)
 
-# Unused audio inputs tied to AGND: Pin 3 (IN3), Pin 8 (IN4), Pin 9 (IN5), Pin 10 (IN6)
+# Unused audio inputs tied together to AGND bus: Pin 3 (IN3), Pin 8 (IN4), Pin 9 (IN5), Pin 10 (IN6)
+bus_agnd_x = p4x_u2 - 5.08
+agnd_pts = []
 for unpin in ['3', '8', '9', '10']:
     p = pt2258_pins[unpin]
     px, py = sym_to_sch(u2_x, u2_y, p['x'], p['y'], 0)
-    sch_text += add_wire(px, py, px - 5.08, py)
-    sch_text += add_gnd(px - 5.08, py, "AGND")
+    sch_text += add_wire(px, py, bus_agnd_x, py)
+    sch_text += add_junction(bus_agnd_x, py)
+    agnd_pts.append(py)
+sch_text += add_wire(bus_agnd_x, min(agnd_pts), bus_agnd_x, max(agnd_pts))
+sch_text += add_wire(bus_agnd_x, agnd_pts[1], bus_agnd_x - 3.81, agnd_pts[1])
+sch_text += add_gnd(bus_agnd_x - 3.81, agnd_pts[1], "AGND")
 
 # Unused audio outputs: Pin 11 (OUT6), Pin 12 (OUT5), Pin 13 (OUT4), Pin 18 (OUT3)
 for unpin in ['11', '12', '13', '18']:
@@ -567,8 +587,9 @@ sch_text += add_wire(j1_t[0], j1_t[1], j1_t[0] + 5.08, j1_t[1])
 sch_text += add_label("LINE_IN_L", j1_t[0] + 5.08, j1_t[1], 0)
 sch_text += add_wire(j1_r[0], j1_r[1], j1_r[0] + 5.08, j1_r[1])
 sch_text += add_label("LINE_IN_R", j1_r[0] + 5.08, j1_r[1], 0)
-sch_text += add_wire(j1_s[0], j1_s[1], j1_s[0] + 5.08, j1_s[1])
-sch_text += add_gnd(j1_s[0] + 5.08, j1_s[1], "AGND")
+sch_text += add_wire(j1_s[0], j1_s[1], j1_s[0] + 2.54, j1_s[1])
+sch_text += add_wire(j1_s[0] + 2.54, j1_s[1], j1_s[0] + 2.54, j1_s[1] + 5.08)
+sch_text += add_gnd(j1_s[0] + 2.54, j1_s[1] + 5.08, "AGND")
 
 # =========================================================================
 # 6. Audio Output AC Coupling: C3, C4 (at 254.0, 91.44)
@@ -796,8 +817,9 @@ sch_text += add_wire(j2_t[0], j2_t[1], j2_t[0] + 5.08, j2_t[1])
 sch_text += add_label("SPK_OUT_L", j2_t[0] + 5.08, j2_t[1], 0)
 sch_text += add_wire(j2_r[0], j2_r[1], j2_r[0] + 5.08, j2_r[1])
 sch_text += add_label("SPK_OUT_R", j2_r[0] + 5.08, j2_r[1], 0)
-sch_text += add_wire(j2_s[0], j2_s[1], j2_s[0] + 5.08, j2_s[1])
-sch_text += add_gnd(j2_s[0] + 5.08, j2_s[1], "AGND")
+sch_text += add_wire(j2_s[0], j2_s[1], j2_s[0] + 2.54, j2_s[1])
+sch_text += add_wire(j2_s[0] + 2.54, j2_s[1], j2_s[0] + 2.54, j2_s[1] + 5.08)
+sch_text += add_gnd(j2_s[0] + 2.54, j2_s[1] + 5.08, "AGND")
 
 # J3: Headphone Out (at 330.2, 139.70, rot=0)
 j3_x, j3_y = 330.2, 139.70
@@ -821,8 +843,9 @@ sch_text += add_wire(j3_t[0], j3_t[1], j3_t[0] + 5.08, j3_t[1])
 sch_text += add_label("HP_OUT_L", j3_t[0] + 5.08, j3_t[1], 0)
 sch_text += add_wire(j3_r[0], j3_r[1], j3_r[0] + 5.08, j3_r[1])
 sch_text += add_label("HP_OUT_R", j3_r[0] + 5.08, j3_r[1], 0)
-sch_text += add_wire(j3_s[0], j3_s[1], j3_s[0] + 5.08, j3_s[1])
-sch_text += add_gnd(j3_s[0] + 5.08, j3_s[1], "AGND")
+sch_text += add_wire(j3_s[0], j3_s[1], j3_s[0] + 2.54, j3_s[1])
+sch_text += add_wire(j3_s[0] + 2.54, j3_s[1], j3_s[0] + 2.54, j3_s[1] + 5.08)
+sch_text += add_gnd(j3_s[0] + 2.54, j3_s[1] + 5.08, "AGND")
 
 # =========================================================================
 # 10. NT1: NetTie_2 Single-Point Ground Star Connection (at 152.4, 177.8)
