@@ -2,7 +2,7 @@
 	(version "E")
 	(design
 		(source "/home/user/Projects/kicad/myaudio/pcb/main_board/main_board.kicad_sch")
-		(date "2026-10-12T15:14:37")
+		(date "2026-10-12T15:59:56")
 		(tool "Eeschema 10.0.7-10.0.7~ubuntu24.04.1")
 		(sheet
 			(number "1")
@@ -93,7 +93,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "496c0534-e8a8-497f-bf26-c2d064529b10")
+			(tstamps "493ccebb-a614-4e50-87b8-ec13a2b59eee")
 			(units
 				(unit
 					(name "A")
@@ -147,7 +147,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "9908f88b-6fba-4c9a-bb29-b943065eb6f7")
+			(tstamps "dcf0c60a-1583-48ed-9579-2c50b4577d91")
 			(units
 				(unit
 					(name "A")
@@ -201,7 +201,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "580bbe5c-f220-4525-86dd-0baa94b2f675")
+			(tstamps "ad058216-23ac-4bf5-ac36-d85d7a96793e")
 			(units
 				(unit
 					(name "A")
@@ -255,7 +255,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "29fb5475-e963-45c5-bd14-67796c7de718")
+			(tstamps "3e53fc63-0ea3-42d1-94a1-22b4931e1621")
 			(units
 				(unit
 					(name "A")
@@ -309,7 +309,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "ec5b7bc2-0a03-4f2f-ae5d-07576db8a2ee")
+			(tstamps "0fbcc895-8f4d-4f58-bb32-2fffcf7d0cc1")
 			(units
 				(unit
 					(name "A")
@@ -363,7 +363,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "515b5872-7498-4190-a404-69a9dc31a55b")
+			(tstamps "44cdb4df-2721-4323-8051-3091cb4f24d6")
 			(units
 				(unit
 					(name "A")
@@ -417,7 +417,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "b6e54fb3-e755-4a35-a0a7-ecf4bb7e949f")
+			(tstamps "a7e4d1de-2d04-4229-bcba-191d470f5ae6")
 			(units
 				(unit
 					(name "A")
@@ -471,7 +471,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "d87bb8e1-7d03-4c82-8dc2-6e57ab7d10ff")
+			(tstamps "e833dda8-aab9-45bb-bdd1-7d9658d0518d")
 			(units
 				(unit
 					(name "A")
@@ -525,7 +525,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "b9f06319-b704-421c-9be0-ca3ac0819781")
+			(tstamps "edef7c61-04d5-41cc-b7af-8a874d352ea3")
 			(units
 				(unit
 					(name "A")
@@ -579,7 +579,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "764ffc66-2dde-499c-b2b6-6b5bedd19609")
+			(tstamps "98779acc-60e7-4b52-979c-bf46381ce3b5")
 			(units
 				(unit
 					(name "A")
@@ -636,7 +636,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "4a268e56-c6a7-4a36-a609-e2acd4e86ca0")
+			(tstamps "e7d8a619-a5f3-4c42-845c-88ef5e4d87b5")
 			(units
 				(unit
 					(name "A")
@@ -693,7 +693,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "ab81c5d7-c52b-4617-9d61-8f19d643fddc")
+			(tstamps "5d9f5fc4-7760-4ba7-b42e-79407a389080")
 			(units
 				(unit
 					(name "A")
@@ -750,7 +750,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "891417f0-4763-463d-a464-ee45d4c4d1cc")
+			(tstamps "3b522882-c234-46e4-8b0b-5651ee2de9ea")
 			(units
 				(unit
 					(name "A")
@@ -822,7 +822,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "be7b63b5-d9cf-4b6b-bbb3-d95c94ad39dd")
+			(tstamps "0cf359e0-bf89-46f0-84f6-187416afd73f")
 			(units
 				(unit
 					(name "A")
@@ -876,7 +876,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "aac9c5a6-2891-43cf-ad3f-d4a476e9d7b5")
+			(tstamps "99edb144-13b7-4b33-9435-a5fa6d8270a7")
 			(units
 				(unit
 					(name "A")
@@ -930,7 +930,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "d18d9d52-b9ab-4b82-b3cc-8e0186398b67")
+			(tstamps "7481b064-d658-4f2f-9011-65031bf93984")
 			(units
 				(unit
 					(name "A")
@@ -987,7 +987,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "a8fdf32b-8781-40da-8dbc-9c3064dd5228")
+			(tstamps "bc8f9681-2974-4475-a232-b92eadfd84c4")
 			(units
 				(unit
 					(name "A")
@@ -1041,7 +1041,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "bf003e18-8aff-444b-bf05-17cddf84e787")
+			(tstamps "e404fd29-9b73-41a5-801f-5b84e508af2f")
 			(units
 				(unit
 					(name "A")
@@ -1095,7 +1095,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "a07af004-bcf1-4cc3-8e63-1c1de2b26e84")
+			(tstamps "f9c68cc9-bfbe-4a38-971e-0e00c0d1311d")
 			(units
 				(unit
 					(name "A")
@@ -1149,7 +1149,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "c26f5dc8-d8d0-47e6-b8fc-0a7d1fa4ecab")
+			(tstamps "b7fbf7ff-cca8-40b1-86e0-ef6431c4066b")
 			(units
 				(unit
 					(name "A")
@@ -1221,7 +1221,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "efe2f13e-65cf-46d5-8731-4ac291149c50")
+			(tstamps "798c22c9-12f9-4d6d-b477-c952bc1b712d")
 			(units
 				(unit
 					(name "A")
@@ -1267,7 +1267,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "0a98707c-ce2e-45f5-8c52-103cf5931dcc")
+			(tstamps "944822e9-22e9-4c4b-8887-bacac56aef87")
 			(units
 				(unit
 					(name "A")
@@ -1357,7 +1357,7 @@
 				(names "/")
 				(tstamps "/")
 			)
-			(tstamps "fac9ddfa-02c4-4354-9fc6-f760dc59a9d7")
+			(tstamps "9b86f196-9242-4c23-9d21-f3a48c5d5beb")
 			(units
 				(unit
 					(name "A")
@@ -2595,9 +2595,27 @@
 			)
 			(node
 				(ref "U2")
+				(pin "17")
+				(pinfunction "CODE1_17")
+				(pintype "input")
+			)
+			(node
+				(ref "U2")
 				(pin "3")
 				(pinfunction "IN3_3")
 				(pintype "input")
+			)
+			(node
+				(ref "U2")
+				(pin "4")
+				(pinfunction "CODE2_4")
+				(pintype "input")
+			)
+			(node
+				(ref "U2")
+				(pin "5")
+				(pinfunction "DGND_5")
+				(pintype "power_in")
 			)
 			(node
 				(ref "U2")
@@ -2657,24 +2675,6 @@
 				(ref "U1")
 				(pin "13")
 				(pinfunction "GND_13")
-				(pintype "power_in")
-			)
-			(node
-				(ref "U2")
-				(pin "17")
-				(pinfunction "CODE1_17")
-				(pintype "input")
-			)
-			(node
-				(ref "U2")
-				(pin "4")
-				(pinfunction "CODE2_4")
-				(pintype "input")
-			)
-			(node
-				(ref "U2")
-				(pin "5")
-				(pinfunction "DGND_5")
 				(pintype "power_in")
 			)
 		)

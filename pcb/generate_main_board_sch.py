@@ -409,33 +409,34 @@ p16x, p16y = sym_to_sch(u2_x, u2_y, p16['x'], p16['y'], 0)
 sch_text += add_wire(p16x, p16y, p16x, p16y - 5.08)
 sch_text += add_label("+5V_FILT", p16x, p16y - 5.08, 90)
 
-# Pin 5: DGND (offset right-down for clear separation from AGND)
-p5 = pt2258_pins['5']
-p5x, p5y = sym_to_sch(u2_x, u2_y, p5['x'], p5['y'], 0)
-sch_text += add_wire(p5x, p5y, p5x + 3.81, p5y + 3.81)
-sch_text += add_wire(p5x + 3.81, p5y + 3.81, p5x + 3.81, p5y + 6.35)
-sch_text += add_gnd(p5x + 3.81, p5y + 6.35, "DGND")
-
-# Pin 14: GND (AGND) (offset left-down for clear separation from DGND)
+# Pin 14 (GND) & Pin 5 (DGND): Both tied together to AGND at bottom
 p14_u2 = pt2258_pins['14']
 p14x_u2, p14y_u2 = sym_to_sch(u2_x, u2_y, p14_u2['x'], p14_u2['y'], 0)
-sch_text += add_wire(p14x_u2, p14y_u2, p14x_u2 - 3.81, p14y_u2 + 3.81)
-sch_text += add_wire(p14x_u2 - 3.81, p14y_u2 + 3.81, p14x_u2 - 3.81, p14y_u2 + 6.35)
-sch_text += add_gnd(p14x_u2 - 3.81, p14y_u2 + 6.35, "AGND")
+p5 = pt2258_pins['5']
+p5x, p5y = sym_to_sch(u2_x, u2_y, p5['x'], p5['y'], 0)
+sch_text += add_wire(p14x_u2, p14y_u2, p14x_u2, p14y_u2 + 3.81)
+sch_text += add_wire(p5x, p5y, p5x, p5y + 3.81)
+sch_text += add_wire(p14x_u2, p14y_u2 + 3.81, p5x, p5y + 3.81)
+mid_bottom_x = (p14x_u2 + p5x) / 2.0
+sch_text += add_junction(mid_bottom_x, p14y_u2 + 3.81)
+sch_text += add_wire(mid_bottom_x, p14y_u2 + 3.81, mid_bottom_x, p14y_u2 + 6.35)
+sch_text += add_gnd(mid_bottom_x, p14y_u2 + 6.35, "AGND")
 
-# Pin 4 (CODE2) & Pin 17 (CODE1): Tied together to single DGND symbol
-p4_u2 = pt2258_pins['4']
-p4x_u2, p4y_u2 = sym_to_sch(u2_x, u2_y, p4_u2['x'], p4_u2['y'], 0)
-p17 = pt2258_pins['17']
-p17x, p17y = sym_to_sch(u2_x, u2_y, p17['x'], p17['y'], 0)
-bus_dgnd_x = p4x_u2 - 5.08
-sch_text += add_wire(p17x, p17y, bus_dgnd_x, p17y)
-sch_text += add_wire(p4x_u2, p4y_u2, bus_dgnd_x, p4y_u2)
-sch_text += add_wire(bus_dgnd_x, p17y, bus_dgnd_x, p4y_u2)
-sch_text += add_junction(bus_dgnd_x, p17y)
-sch_text += add_junction(bus_dgnd_x, p4y_u2)
-sch_text += add_wire(bus_dgnd_x, p4y_u2, bus_dgnd_x - 3.81, p4y_u2)
-sch_text += add_gnd(bus_dgnd_x - 3.81, p4y_u2, "DGND")
+# Unused audio inputs (Pin 3, 8, 9, 10) & Address pins (Pin 17, 4: CODE1, CODE2):
+# All tied to AGND on a single clean vertical bus on the left!
+bus_agnd_x = p14x_u2 - 10.16 # x = 185.42
+agnd_left_pins = ['3', '8', '9', '10', '17', '4']
+agnd_pts = []
+for unpin in agnd_left_pins:
+    p = pt2258_pins[unpin]
+    px, py = sym_to_sch(u2_x, u2_y, p['x'], p['y'], 0)
+    sch_text += add_wire(px, py, bus_agnd_x, py)
+    sch_text += add_junction(bus_agnd_x, py)
+    agnd_pts.append(py)
+sch_text += add_wire(bus_agnd_x, min(agnd_pts), bus_agnd_x, max(agnd_pts))
+mid_left_y = agnd_pts[3] # Pin 10 at y=101.60
+sch_text += add_wire(bus_agnd_x, mid_left_y, bus_agnd_x - 3.81, mid_left_y)
+sch_text += add_gnd(bus_agnd_x - 3.81, mid_left_y, "AGND")
 
 # Pin 6 (SCL): I2C_SCL
 p6_u2 = pt2258_pins['6']
@@ -448,19 +449,6 @@ p7_u2 = pt2258_pins['7']
 p7x_u2, p7y_u2 = sym_to_sch(u2_x, u2_y, p7_u2['x'], p7_u2['y'], 0)
 sch_text += add_wire(p7x_u2, p7y_u2, p7x_u2 - 8.89, p7y_u2)
 sch_text += add_label("I2C_SDA", p7x_u2 - 8.89, p7y_u2, 180)
-
-# Unused audio inputs tied together to AGND bus: Pin 3 (IN3), Pin 8 (IN4), Pin 9 (IN5), Pin 10 (IN6)
-bus_agnd_x = p4x_u2 - 5.08
-agnd_pts = []
-for unpin in ['3', '8', '9', '10']:
-    p = pt2258_pins[unpin]
-    px, py = sym_to_sch(u2_x, u2_y, p['x'], p['y'], 0)
-    sch_text += add_wire(px, py, bus_agnd_x, py)
-    sch_text += add_junction(bus_agnd_x, py)
-    agnd_pts.append(py)
-sch_text += add_wire(bus_agnd_x, min(agnd_pts), bus_agnd_x, max(agnd_pts))
-sch_text += add_wire(bus_agnd_x, agnd_pts[1], bus_agnd_x - 3.81, agnd_pts[1])
-sch_text += add_gnd(bus_agnd_x - 3.81, agnd_pts[1], "AGND")
 
 # Unused audio outputs: Pin 11 (OUT6), Pin 12 (OUT5), Pin 13 (OUT4), Pin 18 (OUT3)
 for unpin in ['11', '12', '13', '18']:
