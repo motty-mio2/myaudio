@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "kicad": {
+      "command": "node",
+      "args": [
+        "thirdparty/KiCAD-MCP-Server/dist/index.js"
+      ]
+    }
+  }
+}

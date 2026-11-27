@@ -1,0 +1,3 @@
+[submodule "thirdparty/KiCAD-MCP-Server"]
+	path = thirdparty/KiCAD-MCP-Server
+	url = https://github.com/mixelpixx/KiCAD-MCP-Server

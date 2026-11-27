@@ -1,0 +1,28 @@
+lockfile_version: '1'
+apm_version: 0.38.1
+manifest_targets:
+- antigravity
+dependencies: []
+deployments:
+- kind: uri
+  target: mcp
+  value: kicad
+  runtime: antigravity
+  scope: project
+  owners:
+  - .
+  active_owner: .
+  content_hash: sha256:986d56e8148d59a85fafe96b030862c189c948c9bb8164b95e18dd9ad57b9a34
+mcp_servers:
+- kicad
+mcp_configs:
+  kicad:
+    name: kicad
+    transport: stdio
+    args:
+    - thirdparty/KiCAD-MCP-Server/dist/index.js
+    registry: false
+    command: node
+mcp_target_servers:
+  antigravity:
+  - kicad

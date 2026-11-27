@@ -1,0 +1,23 @@
+[settings]
+lockfile = true
+
+[tools]
+uv = "0.13.4"
+node = "24.22.3"
+
+[tasks."mcp:setup"]
+description = "Build KiCAD-MCP-Server and set up its Python .venv"
+dir = "thirdparty/KiCAD-MCP-Server"
+run = """
+npm install
+npm run build
+if [ ! -d .venv ]; then
+  uv venv --python /usr/bin/python3 --system-site-packages .venv
+fi
+uv pip install --python .venv/bin/python -r requirements.txt
+"""
+
+[tasks."mcp:verify"]
+description = "Verify KiCAD-MCP-Server prerequisites"
+dir = "thirdparty/KiCAD-MCP-Server"
+run = "KICAD_PYTHON=$PWD/.venv/bin/python ./setup-linux.sh --verify"
