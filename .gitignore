@@ -5,6 +5,8 @@
 *.kicad_pcb-bak
 *.kicad_sch-bak
 _autosave-*
+_restore_backup_*
+*-backups/
 *.tmp
 *-save.kicad_pcb
 *-save.kicad_sch
