@@ -3950,7 +3950,562 @@
 			)
 			(embedded_fonts no)
 		)
-	)
+	
+        	(symbol "myaudio:TQ2-5V"
+    		(exclude_from_sim no)
+    		(in_bom yes)
+    		(on_board yes)
+    		(in_pos_files yes)
+    		(duplicate_pin_numbers_are_jumpers no)
+    		(property "Reference" "K"
+    			(at 16.51 3.81 0)
+    			(show_name no)
+    			(do_not_autoplace no)
+    			(effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    				(justify left)
+    			)
+    		)
+    		(property "Value" "TQ2-5V"
+    			(at 16.51 1.27 0)
+    			(show_name no)
+    			(do_not_autoplace no)
+    			(effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    				(justify left)
+    			)
+    		)
+    		(property "Footprint" "main_board_footprints:Relay_DPDT_Panasonic_TQ2"
+    			(at 0 0 0)
+    			(show_name no)
+    			(do_not_autoplace no)
+    			(hide yes)
+    			(effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    				(justify left)
+    			)
+    		)
+    		(property "Datasheet" "https://industrial.panasonic.com/ac/e/search_num/index.jsp?c=detail&part_no=ATQ209"
+    			(at 0 0 0)
+    			(show_name no)
+    			(do_not_autoplace no)
+    			(hide yes)
+    			(effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    			)
+    		)
+    		(property "Description" "Panasonic TQ2-5V (ATQ209) DPDT 5V DC Signal Relay"
+    			(at 0 0 0)
+    			(show_name no)
+    			(do_not_autoplace no)
+    			(hide yes)
+    			(effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    			)
+    		)
+    		(property "ki_keywords" "Panasonic TQ2-5V DPDT Relay"
+    			(at 0 0 0)
+    			(show_name no)
+    			(do_not_autoplace no)
+    			(hide yes)
+    			(effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    			)
+    		)
+    		(property "ki_fp_filters" "Relay*DPDT*Panasonic*TQ2*"
+    			(at 0 0 0)
+    			(show_name no)
+    			(do_not_autoplace no)
+    			(hide yes)
+    			(effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    			)
+    		)
+    		(symbol "TQ2-5V_0_0"
+    			(text "+"
+    				(at -9.271 2.921 0)
+    				(effects
+    					(font
+    						(size 1.27 1.27)
+    					)
+    				)
+    			)
+    		)
+    		(symbol "TQ2-5V_0_1"
+    			(rectangle
+    				(start -15.24 5.08)
+    				(end 15.24 -5.08)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type background)
+    				)
+    			)
+    			(rectangle
+    				(start -13.335 1.905)
+    				(end -6.985 -1.905)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -12.7 -1.905) (xy -7.62 1.905)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -10.16 5.08) (xy -10.16 1.905)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -10.16 -5.08) (xy -10.16 -1.905)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -6.985 0) (xy -6.35 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -5.715 0) (xy -5.08 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -4.445 0) (xy -3.81 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -3.175 0) (xy -2.54 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -2.54 5.08) (xy -2.54 2.54) (xy -1.905 3.175) (xy -2.54 3.81)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type outline)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -1.905 0) (xy -1.27 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy -0.635 0) (xy 0 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 0 -2.54) (xy -1.905 3.81)
+    				)
+    				(stroke
+    					(width 0.508)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 0 -2.54) (xy 0 -5.08)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 0.635 0) (xy 1.27 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 1.905 0) (xy 2.54 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 2.54 5.08) (xy 2.54 2.54) (xy 1.905 3.175) (xy 2.54 3.81)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 3.175 0) (xy 3.81 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 4.445 0) (xy 5.08 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 5.715 0) (xy 6.35 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 6.985 0) (xy 7.62 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 7.62 5.08) (xy 7.62 2.54) (xy 8.255 3.175) (xy 7.62 3.81)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type outline)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 8.255 0) (xy 8.89 0)
+    				)
+    				(stroke
+    					(width 0.254)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 10.16 -2.54) (xy 8.255 3.81)
+    				)
+    				(stroke
+    					(width 0.508)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 10.16 -2.54) (xy 10.16 -5.08)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    			(polyline
+    				(pts
+    					(xy 12.7 5.08) (xy 12.7 2.54) (xy 12.065 3.175) (xy 12.7 3.81)
+    				)
+    				(stroke
+    					(width 0)
+    					(type default)
+    				)
+    				(fill
+    					(type none)
+    				)
+    			)
+    		)
+    		(symbol "TQ2-5V_1_1"
+    			(pin passive line
+    				(at -10.16 7.62 270)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "1"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    			(pin passive line
+    				(at -2.54 7.62 270)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "2"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    			(pin passive line
+    				(at 0 -7.62 90)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "3"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    			(pin passive line
+    				(at 2.54 7.62 270)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "4"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    			(pin passive line
+    				(at 12.7 7.62 270)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "7"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    			(pin passive line
+    				(at 10.16 -7.62 90)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "8"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    			(pin passive line
+    				(at 7.62 7.62 270)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "9"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    			(pin passive line
+    				(at -10.16 -7.62 90)
+    				(length 2.54)
+    				(name ""
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    				(number "10"
+    					(effects
+    						(font
+    							(size 1.27 1.27)
+    						)
+    					)
+    				)
+    			)
+    		)
+    		(embedded_fonts no)
+    	)
+  )
 	(junction
 		(at 190.5 106.68)
 		(diameter 0)
@@ -8008,7 +8563,7 @@
 				)
 			)
 		)
-		(property "Value" "PT2258"
+		(property "Value" "PT2258-S"
 			(at 203.2 83.82 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8018,7 +8573,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Package_DIP:DIP-20_W7.62mm"
+		(property "Footprint" "Package_SO:SOIC-20W_7.5x12.8mm_P1.27mm"
 			(at 203.2 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -8029,7 +8584,7 @@
 				)
 			)
 		)
-		(property "Datasheet" "http://www.princeton.com.tw/Portals/0/Product/PT2258.pdf"
+		(property "Datasheet" "http://www.princeton.com.tw/Portals/0/Product/PT2258-s.pdf"
 			(at 203.2 101.6 0)
 			(hide yes)
 			(show_name no)
@@ -8346,104 +8901,6 @@
 			(project "main_board"
 				(path "/4fe609d1-cb86-4b38-b42f-a4d358d013c7"
 					(reference "C3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Relay:G6K-2")
-		(at 279.4 137.16 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "b7fbf7ff-cca8-40b1-86e0-ef6431c4066b")
-		(property "Reference" "RY1"
-			(at 295.91 140.97 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "G6K-2P-Y_DC5"
-			(at 295.91 138.43 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Relay_THT:Relay_DPDT_Omron_G6K-2P-Y"
-			(at 279.4 137.16 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Datasheet" "http://omronfs.omron.com/en_US/ecb/products/pdf/en-g6k.pdf"
-			(at 279.4 137.16 0)
-			(hide yes)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 279.4 137.16 0)
-			(show_name no)
-			(do_not_autoplace no)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(pin "1"
-			(uuid "fd1f2c3f-f7fd-4afd-a6bd-70c6ec2c989f")
-		)
-		(pin "2"
-			(uuid "b06e64cf-9933-48d2-8a9b-1436357403c8")
-		)
-		(pin "3"
-			(uuid "f255b4cc-4ee7-43ad-a2dd-7caa83dd7525")
-		)
-		(pin "4"
-			(uuid "8d0f76b6-ff5d-44ec-afca-956f61ba1ba0")
-		)
-		(pin "5"
-			(uuid "7acd7b40-c1a7-4793-b511-d85f5767249c")
-		)
-		(pin "6"
-			(uuid "a0ebe31e-ca13-4480-bee2-af32a1fa251b")
-		)
-		(pin "7"
-			(uuid "3d28c20b-f8b7-495a-9d11-b8b4c7d7e9f1")
-		)
-		(pin "8"
-			(uuid "f3bac37a-66f6-4ae7-bd15-19e38364ccf2")
-		)
-		(instances
-			(project "main_board"
-				(path "/4fe609d1-cb86-4b38-b42f-a4d358d013c7"
-					(reference "RY1")
 					(unit 1)
 				)
 			)
@@ -9381,7 +9838,83 @@
 			)
 		)
 	)
-	(sheet_instances
+	  (symbol (lib_id "myaudio:TQ2-5V") (at 279.4 137.16 0) (unit 1)
+    (body_style 1) (exclude_from_sim no) (in_bom yes) (on_board yes) (in_pos_files yes) (dnp no)
+    (uuid "f18a432e-5cf6-46c0-9602-eeeb456a6a6a")
+    (property "Reference" "RY1"
+      (at 295.91 140.97 0)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    				(justify left)
+    			)
+    )
+    (property "Value" "TQ2-5V"
+      (at 295.91 138.43 0)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    				(justify left)
+    			)
+    )
+    (property "Footprint" "main_board_footprints:Relay_DPDT_Panasonic_TQ2"
+      (at 279.4 137.16 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    				(justify left)
+    			)
+    )
+    (property "Datasheet" "https://industrial.panasonic.com/ac/e/search_num/index.jsp?c=detail&part_no=ATQ209"
+      (at 279.4 137.16 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    			)
+    )
+    (property "Description" ""
+      (at 279.4 137.16 0)
+      (hide yes)
+      (show_name no)
+      (do_not_autoplace no)
+      (effects
+    				(font
+    					(size 1.27 1.27)
+    				)
+    			)
+    )
+    (pin "1" (uuid "d1b243e1-7a2c-4af9-b102-4af55ec10517"))
+    (pin "10" (uuid "8a45c413-0c23-4a9a-a34c-82b5d0176ae3"))
+    (pin "2" (uuid "1b524e53-6b6f-47a4-b876-8ec0b0e57e1c"))
+    (pin "3" (uuid "786166c1-f2a8-4303-ab5f-009f591e1a4f"))
+    (pin "4" (uuid "7280964b-e1c9-4a03-99bc-22841d64dae2"))
+    (pin "7" (uuid "cb121c83-5ca7-4e0e-b1ae-0c998fd95d24"))
+    (pin "8" (uuid "1bde5c9f-5eb0-48ad-bf2b-f470ca8ffda4"))
+    (pin "9" (uuid "08ae5cf7-760d-4ddc-a82b-d16de7804b3a"))
+    (instances
+      (project "main_board"
+        (path "/50940a6c-032b-4eb6-8179-fefb4d0a975e"
+          (reference "RY1")
+          (unit 1)
+        )
+      )
+    )
+  )
+  (sheet_instances
 		(path "/"
 			(page "1")
 		)

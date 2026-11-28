@@ -15,7 +15,7 @@
   - プロ用リレー・コネクタ・マイコン部も含め、一般的なはんだごて（30W〜40W程度）で失敗なく組み立て可能。
 - **高音質アナログ・デジタル完全分離設計**:
   - PT2258（I2C 電子ボリュームIC）のアナロググランド（AGND）とデジタルグランド（DGND）を独立プレーン化し、1点（NetTie）のみで結合。
-  - 音声信号のリレー切り替えには、高信頼性金メッキ接点シグナルリレー（OMRON G6K-2P-Y）を採用。
+  - 音声信号のリレー切り替えには、高信頼性金クラッド銀接点シグナルリレー（パナソニック TQ2-5V）を採用。
 - **設計品質（完全検証済み）**:
   - サテライト基板: **ERC 0件、DRC 0件、未配線 0件**
   - メイン基板: **ERC 0件、DRC 0件、未配線 0件**
@@ -75,7 +75,7 @@
     - PT2258 電子ボリューム部（DCカット音響コンデンサ C1〜C4）
     - 高精度 B.Cu アナロググランド（AGND）ベタプレーン
   - **中央**: 
-    - 信号切替用 高信頼性シグナルリレー（OMRON G6K-2P-Y）
+    - 信号切替用 高信頼性シグナルリレー（パナソニック TQ2-5V）
     - 1点結合用ネットタイ（NT1）
     - LCノイズ低減電源フィルタ（L1 10uH + C6 100uF + C7 0.1uF）
   - **南側（デジタル領域）**:
@@ -144,3 +144,28 @@
 - `kicad-cli sch erc`: **0 エラー, 0 警告**
 - `kicad-cli pcb drc`: **0 違反, 0 未配線アイテム**
 製造用データはガーバー・ドリルともに完全に整合しており、製造および実装を即座に開始できます。
+
+---
+
+## 7. メイン基板 部品調達リスト (Issue #1)
+
+秋葉原実店舗・通販（秋月電子 / マルツ）での入手性を重視したメイン基板の部品リストです（[BOM.md](BOM.md) もあわせて参照してください）。
+
+| 参照記号 | 部品名・仕様 | 数量 | 秋月電子 | マルツオンライン | 備考 |
+|:---|:---|:---:|:---|:---|:---|
+| **RY1** | シグナルリレー Panasonic TQ2-5V (ATQ209, DPDT 5V) | 1 | [117427](https://akizukidenshi.com/catalog/g/g117427/) | [1528394](https://www.marutsu.co.jp/pc/i/1528394/) | Issue #1 にて G6K-2P-Y から変更 |
+| **U2** | 6ch 電子ボリューム IC PT2258-S (SOP-20, P=1.27mm) | 1 | 取扱なし | 取扱なし | LCSC / AliExpress 等で調達（Issue #1 にて DIP-20 から変更） |
+| **Q1** | Nch MOSFET 2N7000 (TO-92) | 1 | [109723](https://akizukidenshi.com/catalog/g/g109723/) | [1827138](https://www.marutsu.co.jp/pc/i/1827138/) | リレー駆動用 |
+| **D1** | スイッチングダイオード 1N4148 (DO-35) | 1 | [100941](https://akizukidenshi.com/catalog/g/g100941/) | [13304](https://www.marutsu.co.jp/pc/i/13304/) | 逆起電力保護用 |
+| **C1〜C4** | 音響用電解コンデンサ 4.7μF (ニチコン MUSE ES / FG) | 4 | [104623](https://akizukidenshi.com/catalog/g/g104623/) (MUSE ES 25V) | [2581079](https://www.marutsu.co.jp/pc/i/2581079/) (`UFG1H4R7MDM` MUSE FG 50V) | 音声入出力カップリング |
+| **C6** | 電解コンデンサ 100μF 16V | 1 | [105002](https://akizukidenshi.com/catalog/g/g105002/) (ルビコン MH5) | 店頭・サイト内検索 (100μF 16V ラジアル品) | +5V 電源平滑用 |
+| **C8** | 電解コンデンサ 10μF 16〜50V | 1 | [110590](https://akizukidenshi.com/catalog/g/g110590/) (ルビコン MH7 16V) | [42084](https://www.marutsu.co.jp/pc/i/42084/) (`UKW1H100MDD` MUSE KW 50V) | PT2258 VREF 端子用 |
+| **C5, C7** | 積層セラミックコンデンサ 0.1μF 50V (ラジアル) | 2 | [104065](https://akizukidenshi.com/catalog/g/g104065/) | 店頭・サイト内検索 (`RPEF11H104Z2P1A01B` 等) | デカップリング用 |
+| **R1, R2** | 金属皮膜抵抗 4.7kΩ 1/4W | 2 | [108546](https://akizukidenshi.com/catalog/g/g108546/) | 店頭・サイト内検索 (`MF1/4CC4701F` 等) | I2C プルアップ用 |
+| **R3** | 金属皮膜抵抗 10kΩ 1/4W | 1 | [108550](https://akizukidenshi.com/catalog/g/g108550/) | 店頭・サイト内検索 (`MF1/4CC1002F` 等) | Q1 ゲートプルダウン用 |
+| **R_G1** | 金属皮膜抵抗 1kΩ 1/4W | 1 | [108535](https://akizukidenshi.com/catalog/g/g108535/) | 店頭・サイト内検索 (`MF1/4CC1001F` 等) | Q1 ゲート抵抗 |
+| **L1** | マイクロインダクタ 10μH (アキシャル) | 1 | [103963](https://akizukidenshi.com/catalog/g/g103963/) | 店頭・サイト内検索 (10μH アキシャル品) | +5V LC フィルタ用 |
+| **-** | ピンソケット 1×7pin (2.54mmピッチ) | 2 | [104285](https://akizukidenshi.com/catalog/g/g104285/) | [595839](https://www.marutsu.co.jp/pc/i/595839/) (`GB-SPS-257P`) | XIAO ESP32-C6 実装用 |
+| **J4** | RJ45 モジュラージャック (8P8C) | 1 | [100159](https://akizukidenshi.com/catalog/g/g100159/) | [1412127](https://www.marutsu.co.jp/pc/i/1412127/) (`RJHSE5380`) | サテライト接続用 |
+| **J1〜J3** | 3.5mm ステレオミニジャック (3極, THT) | 3 | [102460](https://akizukidenshi.com/catalog/g/g102460/) (ST-005-G 等 ※要フットプリント確認) | [868220](https://www.marutsu.co.jp/pc/i/868220/) (`SJ1-3523N`) | 基板標準は CUI `SJ1-3523N` |
+| **U1** | Seeed Studio XIAO ESP32-C6 *(手持ち/参考)* | 1 | [129481](https://akizukidenshi.com/catalog/g/g129481/) | [2788523](https://www.marutsu.co.jp/pc/i/2788523/) (`113991254`) | システム制御 MCU |
